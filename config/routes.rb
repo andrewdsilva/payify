@@ -1,2 +1,2 @@
-Payify::Engine.routes.draw do
+::Payify::Engine.routes.draw do
 end

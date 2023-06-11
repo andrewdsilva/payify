@@ -12,9 +12,9 @@ gem "sqlite3"
 
 group :development, :test do
   gem "rspec-rails"
+  gem "rubocop", "~> 1.21"
 end
 
 gem "rake", "~> 13.0"
 
 gem "money", "~> 6.16"
-gem "rubocop", "~> 1.21"

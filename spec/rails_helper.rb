@@ -1,8 +1,7 @@
-require "spec_helper"
-
 ENV["RAILS_ENV"] ||= "test"
-
+require "spec_helper"
 require File.expand_path("../test/dummy/config/environment", __dir__)
+
 ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), "../")
 
 abort("The Rails environment is running in production mode!") if Rails.env.production?
