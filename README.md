@@ -47,7 +47,7 @@ To enable payment functionality for a model, simply include the HasPayment conce
 
 ```ruby
 class Reservation < ApplicationRecord
-  include HasPaymentConcern
+  include Payify::HasPaymentConcern
 
   def ammount_to_pay
     self.price
