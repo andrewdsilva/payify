@@ -13,6 +13,9 @@ gem "sqlite3"
 group :development, :test do
   gem "rspec-rails"
   gem "rubocop", "~> 1.21"
+
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 gem "rake", "~> 13.0"

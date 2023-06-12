@@ -19,7 +19,7 @@ module Payify
     end
 
     def tax_rates_id
-      ""
+      nil
     end
   end
 end
