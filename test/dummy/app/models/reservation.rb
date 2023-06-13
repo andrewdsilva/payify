@@ -1,5 +1,5 @@
 class Reservation < ApplicationRecord
-  include Payify::HasPaymentConcern
+  include ::Payify::HasPaymentConcern
 
   def ammount_to_pay
     price
