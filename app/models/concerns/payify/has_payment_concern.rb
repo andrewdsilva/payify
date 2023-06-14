@@ -3,11 +3,11 @@ module Payify
     extend ActiveSupport::Concern
 
     included do
-      has_one :payment, as: :model, dependent: :destroy
+      has_one :payment, as: :model, dependent: :destroy, class_name: "Payify::Payment"
     end
 
     def create_payment
-      build_payment
+      build_payment(amount: amount_to_pay)
     end
 
     def cancel_payment

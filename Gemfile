@@ -18,6 +18,8 @@ group :development, :test do
   gem "faker"
 end
 
-gem "rake", "~> 13.0"
+gem "rake", "~> 13.0.6"
 
 gem "money", "~> 6.16"
+
+gem "timecop", "~> 0.9.6"

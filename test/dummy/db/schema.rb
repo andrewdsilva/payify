@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_045842) do
     t.integer "status", default: 0, null: false
     t.integer "payment_method"
     t.string "transaction_id"
-    t.date "paid_at"
+    t.datetime "paid_at"
     t.string "model_type"
     t.integer "model_id"
     t.datetime "created_at", null: false
