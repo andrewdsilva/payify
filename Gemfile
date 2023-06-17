@@ -12,6 +12,7 @@ gem "sqlite3"
 
 group :development, :test do
   gem "rspec-rails"
+  gem "rails-controller-testing"
   gem "rubocop", "~> 1.21"
 
   gem "factory_bot_rails"
@@ -20,6 +21,7 @@ end
 
 gem "rake", "~> 13.0.6"
 
+gem "active_model_serializers"
 gem "dotenv-rails", "~> 2.8.1"
 gem "money", "~> 6.16"
 gem "stripe", "~> 8.5.0"

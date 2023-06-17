@@ -14,6 +14,7 @@ module Payify
       intent = stripe_client.create_payment_intent(amount)
 
       update_attribute(:stripe_payment_inent_id, intent.id)
+      update_attribute(:stripe_client_secret, intent.client_secret)
     end
 
     def stripe_confirm_payment

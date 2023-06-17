@@ -2,7 +2,7 @@
   resources :payments do
     member do
       get "new"
-      post "create"
+      post "create", as: "create"
     end
   end
 end

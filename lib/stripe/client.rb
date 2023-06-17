@@ -3,7 +3,7 @@ module Stripe
     def initialize
       stripe
 
-      Stripe.api_key = Rails.application.secrets.stripe_api_key
+      Stripe.api_key = Payify.stripe_api_key
     end
 
     def stripe
@@ -12,8 +12,8 @@ module Stripe
 
     def create_payment_intent(amount, object_invoice = "")
       infos = {
-        amount: amount,
-        currency: config.payify.currency,
+        amount: (amount * 100).to_i,
+        currency: Payify.currency,
         description: object_invoice,
         setup_future_usage: "off_session"
       }

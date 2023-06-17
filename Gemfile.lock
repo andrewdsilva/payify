@@ -52,6 +52,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_model_serializers (0.10.13)
+      actionpack (>= 4.1, < 7.1)
+      activemodel (>= 4.1, < 7.1)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (7.0.5)
       activesupport (= 7.0.5)
       globalid (>= 0.3.6)
@@ -74,6 +79,8 @@ GEM
       tzinfo (~> 2.0)
     ast (2.4.2)
     builder (3.2.4)
+    case_transform (0.2)
+      activesupport
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
@@ -95,6 +102,7 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     json (2.6.3)
+    jsonapi-renderer (0.2.2)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -145,6 +153,10 @@ GEM
       activesupport (= 7.0.5)
       bundler (>= 1.15.0)
       railties (= 7.0.5)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -216,6 +228,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_model_serializers
   dotenv-rails (~> 2.8.1)
   factory_bot_rails
   faker
@@ -223,6 +236,7 @@ DEPENDENCIES
   payify!
   puma
   rails (~> 7.0.4)
+  rails-controller-testing
   rake (~> 13.0.6)
   rspec-rails
   rubocop (~> 1.21)

@@ -1,0 +1,2249 @@
+Started GET "/" for ::1 at 2023-06-17 14:19:16 +0200
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20230612045842_create_reservation.rb
+
+
+):
+  
+activerecord (7.0.5) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.5) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.5) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.5) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.5) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.5) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateReservation (20230612045842)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "price" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230612045842"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-06-17 12:19:46.182611"], ["updated_at", "2023-06-17 12:19:46.182611"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-06-17 14:19:48 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/nlopez/.rvm/gems/ruby-2.7.5/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/nlopez/.rvm/gems/ruby-2.7.5/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | Allocations: 247)
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 0.0ms | Allocations: 1891)
+
+
+Started GET "/" for ::1 at 2023-06-17 14:23:38 +0200
+  
+ActionController::RoutingError (uninitialized constant PaymentController):
+  
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-06-17 14:23:47 +0200
+  
+ActionController::RoutingError (uninitialized constant PaymentController):
+  
+Started GET "/" for ::1 at 2023-06-17 14:23:53 +0200
+  
+ActionController::RoutingError (uninitialized constant PaymentController):
+  
+Started GET "/" for ::1 at 2023-06-17 14:23:59 +0200
+  
+ActionController::RoutingError (uninitialized constant PayifyPaymentController):
+  
+Started GET "/" for ::1 at 2023-06-17 14:24:40 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.5ms | Allocations: 3099)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'payify_payments'):
+  
+activerecord (7.0.5) lib/active_record/connection_adapters/sqlite3_adapter.rb:387:in `table_structure'
+activerecord (7.0.5) lib/active_record/connection_adapters/abstract/schema_statements.rb:117:in `columns'
+activerecord (7.0.5) lib/active_record/connection_adapters/schema_cache.rb:117:in `block in columns'
+activerecord (7.0.5) lib/active_record/connection_adapters/schema_cache.rb:116:in `fetch'
+activerecord (7.0.5) lib/active_record/connection_adapters/schema_cache.rb:116:in `columns'
+activerecord (7.0.5) lib/active_record/connection_adapters/schema_cache.rb:125:in `block in columns_hash'
+activerecord (7.0.5) lib/active_record/connection_adapters/schema_cache.rb:124:in `fetch'
+activerecord (7.0.5) lib/active_record/connection_adapters/schema_cache.rb:124:in `columns_hash'
+activerecord (7.0.5) lib/active_record/model_schema.rb:580:in `load_schema!'
+activerecord (7.0.5) lib/active_record/attributes.rb:264:in `load_schema!'
+activerecord (7.0.5) lib/active_record/encryption/encryptable_record.rb:122:in `load_schema!'
+activerecord (7.0.5) lib/active_record/model_schema.rb:566:in `block in load_schema'
+activerecord (7.0.5) lib/active_record/model_schema.rb:563:in `synchronize'
+activerecord (7.0.5) lib/active_record/model_schema.rb:563:in `load_schema'
+activerecord (7.0.5) lib/active_record/model_schema.rb:429:in `attribute_types'
+activerecord (7.0.5) lib/active_record/model_schema.rb:455:in `type_for_attribute'
+activerecord (7.0.5) lib/active_record/type_caster/map.rb:16:in `type_for_attribute'
+activerecord (7.0.5) lib/arel/table.rb:107:in `type_for_attribute'
+activerecord (7.0.5) lib/active_record/table_metadata.rb:18:in `type'
+activerecord (7.0.5) lib/active_record/relation/predicate_builder.rb:59:in `build'
+activerecord (7.0.5) lib/active_record/relation/predicate_builder.rb:54:in `[]'
+activerecord (7.0.5) lib/active_record/relation/predicate_builder.rb:127:in `block in expand_from_hash'
+activerecord (7.0.5) lib/active_record/relation/predicate_builder.rb:80:in `each'
+activerecord (7.0.5) lib/active_record/relation/predicate_builder.rb:80:in `flat_map'
+activerecord (7.0.5) lib/active_record/relation/predicate_builder.rb:80:in `expand_from_hash'
+activerecord (7.0.5) lib/active_record/relation/predicate_builder.rb:25:in `build_from_hash'
+activerecord (7.0.5) lib/active_record/relation/query_methods.rb:1315:in `build_where_clause'
+activerecord (7.0.5) lib/active_record/relation/query_methods.rb:756:in `where!'
+activerecord (7.0.5) lib/active_record/relation/query_methods.rb:751:in `where'
+activerecord (7.0.5) lib/active_record/querying.rb:22:in `where'
+activerecord (7.0.5) lib/active_record/core.rb:280:in `block in find'
+activerecord (7.0.5) lib/active_record/statement_cache.rb:133:in `create'
+activerecord (7.0.5) lib/active_record/core.rb:434:in `block in cached_find_by_statement'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/collection/map/non_concurrent_map_backend.rb:33:in `compute_if_absent'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/collection/map/mri_map_backend.rb:25:in `block in compute_if_absent'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/collection/map/mri_map_backend.rb:25:in `synchronize'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/collection/map/mri_map_backend.rb:25:in `compute_if_absent'
+activerecord (7.0.5) lib/active_record/core.rb:434:in `cached_find_by_statement'
+activerecord (7.0.5) lib/active_record/core.rb:279:in `find'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:26:in `set_object'
+activesupport (7.0.5) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.5) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:116:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePayment (20230617122639)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "payify_payments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "amount" decimal(10,2) NOT NULL, "status" integer DEFAULT 0 NOT NULL, "payment_method" integer, "transaction_id" varchar, "paid_at" datetime(6), "model_type" varchar, "model_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230617122639"]]
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddStripePaymentIntentId (20230617122640)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "payify_payments" ADD "stripe_payment_inent_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230617122640"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-06-17 14:26:55 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 6ms (ActiveRecord: 0.9ms | Allocations: 3047)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Payify::Payment with 'id'=1):
+  
+activerecord (7.0.5) lib/active_record/core.rb:284:in `find'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:26:in `set_object'
+activesupport (7.0.5) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.5) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:116:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-06-17 14:27:06 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.3ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 826)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Payify::Payment with 'id'=1):
+  
+activerecord (7.0.5) lib/active_record/core.rb:284:in `find'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:26:in `set_object'
+activesupport (7.0.5) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.5) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:116:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+Started GET "/" for ::1 at 2023-06-17 14:27:06 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.2ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.2ms | Allocations: 826)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Payify::Payment with 'id'=1):
+  
+activerecord (7.0.5) lib/active_record/core.rb:284:in `find'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:26:in `set_object'
+activesupport (7.0.5) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.5) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:116:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReservation Delete All (6.4ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mReservation Create (0.2ms)[0m  [1m[32mINSERT INTO "reservations" ("id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["price", 1500.0], ["created_at", "2023-06-17 12:28:12.464299"], ["updated_at", "2023-06-17 12:28:12.464299"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPayify::Payment Load (1.2ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."model_id" = ? AND "payify_payments"."model_type" = ? LIMIT ?[0m  [["model_id", 1], ["model_type", "Reservation"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReservation Delete All (7.6ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReservation Delete All (6.9ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[36mPayify::Payment Delete All (1.0ms)[0m  [1m[31mDELETE FROM "payify_payments"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mReservation Create (0.2ms)[0m  [1m[32mINSERT INTO "reservations" ("id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["price", 1500.0], ["created_at", "2023-06-17 12:28:39.694597"], ["updated_at", "2023-06-17 12:28:39.694597"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPayify::Payment Load (0.7ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."model_id" = ? AND "payify_payments"."model_type" = ? LIMIT ?[0m  [["model_id", 1], ["model_type", "Reservation"], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2023-06-17 14:28:41 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms | Allocations: 837)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Payify::Payment with 'id'=1):
+  
+activerecord (7.0.5) lib/active_record/core.rb:284:in `find'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:26:in `set_object'
+activesupport (7.0.5) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.5) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:116:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReservation Delete All (10.5ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[36mPayify::Payment Delete All (0.9ms)[0m  [1m[31mDELETE FROM "payify_payments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mReservation Create (0.2ms)[0m  [1m[32mINSERT INTO "reservations" ("id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["price", 1500.0], ["created_at", "2023-06-17 12:28:48.451780"], ["updated_at", "2023-06-17 12:28:48.451780"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."model_id" = ? AND "payify_payments"."model_type" = ? LIMIT ?[0m  [["model_id", 1], ["model_type", "Reservation"], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2023-06-17 14:28:49 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms | Allocations: 826)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Payify::Payment with 'id'=1):
+  
+activerecord (7.0.5) lib/active_record/core.rb:284:in `find'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:26:in `set_object'
+activesupport (7.0.5) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.5) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:116:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReservation Delete All (3.2ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[36mPayify::Payment Delete All (1.4ms)[0m  [1m[31mDELETE FROM "payify_payments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mReservation Create (0.3ms)[0m  [1m[32mINSERT INTO "reservations" ("id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["price", 1500.0], ["created_at", "2023-06-17 12:30:06.264592"], ["updated_at", "2023-06-17 12:30:06.264592"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPayify::Payment Load (0.2ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."model_id" = ? AND "payify_payments"."model_type" = ? LIMIT ?[0m  [["model_id", 1], ["model_type", "Reservation"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReservation Delete All (4.0ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[36mPayify::Payment Delete All (0.7ms)[0m  [1m[31mDELETE FROM "payify_payments"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mReservation Create (0.3ms)[0m  [1m[32mINSERT INTO "reservations" ("id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["price", 1500.0], ["created_at", "2023-06-17 12:30:32.991523"], ["updated_at", "2023-06-17 12:30:32.991523"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."model_id" = ? AND "payify_payments"."model_type" = ? LIMIT ?[0m  [["model_id", 1], ["model_type", "Reservation"], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2023-06-17 14:30:33 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.2ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms | Allocations: 826)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Payify::Payment with 'id'=1):
+  
+activerecord (7.0.5) lib/active_record/core.rb:284:in `find'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:26:in `set_object'
+activesupport (7.0.5) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.5) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:116:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+Started GET "/" for ::1 at 2023-06-17 14:30:34 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms | Allocations: 826)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Payify::Payment with 'id'=1):
+  
+activerecord (7.0.5) lib/active_record/core.rb:284:in `find'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:26:in `set_object'
+activesupport (7.0.5) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.5) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:116:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+Started GET "/" for ::1 at 2023-06-17 14:30:35 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.2ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms | Allocations: 826)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Payify::Payment with 'id'=1):
+  
+activerecord (7.0.5) lib/active_record/core.rb:284:in `find'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:26:in `set_object'
+activesupport (7.0.5) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.5) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:116:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReservation Delete All (4.2ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[36mPayify::Payment Delete All (1.0ms)[0m  [1m[31mDELETE FROM "payify_payments"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mReservation Create (0.2ms)[0m  [1m[32mINSERT INTO "reservations" ("id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["price", 1500.0], ["created_at", "2023-06-17 12:32:40.339883"], ["updated_at", "2023-06-17 12:32:40.339883"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."model_id" = ? AND "payify_payments"."model_type" = ? LIMIT ?[0m  [["model_id", 1], ["model_type", "Reservation"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPayify::Payment Create (0.2ms)[0m  [1m[32mINSERT INTO "payify_payments" ("amount", "status", "payment_method", "transaction_id", "paid_at", "model_type", "model_id", "created_at", "updated_at", "stripe_payment_inent_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 1500.0], ["status", 0], ["payment_method", nil], ["transaction_id", nil], ["paid_at", nil], ["model_type", "Reservation"], ["model_id", 1], ["created_at", "2023-06-17 12:32:40.368835"], ["updated_at", "2023-06-17 12:32:40.368835"], ["stripe_payment_inent_id", nil]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2023-06-17 14:32:41 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.7ms | Allocations: 8499)
+
+
+  
+Stripe::AuthenticationError (No API key provided. Set your API key using "Stripe.api_key = <API-KEY>". You can generate API keys from the Stripe web interface. See https://stripe.com/api for details, or email support@stripe.com if you have any questions.):
+  
+stripe (8.5.0) lib/stripe/stripe_client.rb:517:in `check_api_key!'
+stripe (8.5.0) lib/stripe/stripe_client.rb:445:in `execute_request_internal'
+stripe (8.5.0) lib/stripe/stripe_client.rb:216:in `execute_request'
+stripe (8.5.0) lib/stripe/api_operations/request.rb:52:in `execute_resource_request_internal'
+stripe (8.5.0) lib/stripe/api_operations/request.rb:9:in `execute_resource_request'
+stripe (8.5.0) lib/stripe/api_operations/request.rb:28:in `request_stripe_object'
+stripe (8.5.0) lib/stripe/api_operations/create.rb:7:in `create'
+/home/nlopez/Project/payify/lib/stripe/client.rb:21:in `create_payment_intent'
+/home/nlopez/Project/payify/app/models/concerns/payify/stripe_payment_concern.rb:14:in `stripe_init_intent'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:6:in `new'
+actionpack (7.0.5) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.5) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+Started GET "/" for ::1 at 2023-06-17 14:37:19 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.2ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms | Allocations: 890)
+
+
+  
+Stripe::AuthenticationError (No API key provided. Set your API key using "Stripe.api_key = <API-KEY>". You can generate API keys from the Stripe web interface. See https://stripe.com/api for details, or email support@stripe.com if you have any questions.):
+  
+stripe (8.5.0) lib/stripe/stripe_client.rb:517:in `check_api_key!'
+stripe (8.5.0) lib/stripe/stripe_client.rb:445:in `execute_request_internal'
+stripe (8.5.0) lib/stripe/stripe_client.rb:216:in `execute_request'
+stripe (8.5.0) lib/stripe/api_operations/request.rb:52:in `execute_resource_request_internal'
+stripe (8.5.0) lib/stripe/api_operations/request.rb:9:in `execute_resource_request'
+stripe (8.5.0) lib/stripe/api_operations/request.rb:28:in `request_stripe_object'
+stripe (8.5.0) lib/stripe/api_operations/create.rb:7:in `create'
+/home/nlopez/Project/payify/lib/stripe/client.rb:21:in `create_payment_intent'
+/home/nlopez/Project/payify/app/models/concerns/payify/stripe_payment_concern.rb:14:in `stripe_init_intent'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:6:in `new'
+actionpack (7.0.5) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.5) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+Started GET "/" for ::1 at 2023-06-17 14:37:27 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 900)
+
+
+  
+Stripe::AuthenticationError (No API key provided. Set your API key using "Stripe.api_key = <API-KEY>". You can generate API keys from the Stripe web interface. See https://stripe.com/api for details, or email support@stripe.com if you have any questions.):
+  
+stripe (8.5.0) lib/stripe/stripe_client.rb:517:in `check_api_key!'
+stripe (8.5.0) lib/stripe/stripe_client.rb:445:in `execute_request_internal'
+stripe (8.5.0) lib/stripe/stripe_client.rb:216:in `execute_request'
+stripe (8.5.0) lib/stripe/api_operations/request.rb:52:in `execute_resource_request_internal'
+stripe (8.5.0) lib/stripe/api_operations/request.rb:9:in `execute_resource_request'
+stripe (8.5.0) lib/stripe/api_operations/request.rb:28:in `request_stripe_object'
+stripe (8.5.0) lib/stripe/api_operations/create.rb:7:in `create'
+/home/nlopez/Project/payify/lib/stripe/client.rb:21:in `create_payment_intent'
+/home/nlopez/Project/payify/app/models/concerns/payify/stripe_payment_concern.rb:14:in `stripe_init_intent'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:6:in `new'
+actionpack (7.0.5) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.5) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+Started GET "/" for ::1 at 2023-06-17 14:37:36 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPayify::Payment Update (0.6ms)[0m  [1m[33mUPDATE "payify_payments" SET "updated_at" = ?, "stripe_payment_inent_id" = ? WHERE "payify_payments"."id" = ?[0m  [["updated_at", "2023-06-17 12:37:37.063960"], ["stripe_payment_inent_id", 0], ["id", 1]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 406 Not Acceptable in 438ms (ActiveRecord: 5.4ms | Allocations: 16459)
+
+
+  
+ActionController::MissingExactTemplate (Payify::PaymentsController#new is missing a template for request formats: text/html):
+  
+actionpack (7.0.5) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (7.0.5) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.5) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+Started GET "/" for ::1 at 2023-06-17 14:39:43 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (6.0ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 5.0ms | Allocations: 70)
+Completed 200 OK in 23ms (Views: 9.1ms | ActiveRecord: 6.0ms | Allocations: 1805)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReservation Delete All (1.9ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[36mPayify::Payment Delete All (1.1ms)[0m  [1m[31mDELETE FROM "payify_payments"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mReservation Create (0.2ms)[0m  [1m[32mINSERT INTO "reservations" ("id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["price", 1500.0], ["created_at", "2023-06-17 12:41:10.246187"], ["updated_at", "2023-06-17 12:41:10.246187"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."model_id" = ? AND "payify_payments"."model_type" = ? LIMIT ?[0m  [["model_id", 1], ["model_type", "Reservation"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPayify::Payment Create (0.1ms)[0m  [1m[32mINSERT INTO "payify_payments" ("amount", "status", "payment_method", "transaction_id", "paid_at", "model_type", "model_id", "created_at", "updated_at", "stripe_payment_inent_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 1500.0], ["status", 0], ["payment_method", nil], ["transaction_id", nil], ["paid_at", nil], ["model_type", "Reservation"], ["model_id", 1], ["created_at", "2023-06-17 12:41:10.276254"], ["updated_at", "2023-06-17 12:41:10.276254"], ["stripe_payment_inent_id", nil]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2023-06-17 14:41:32 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 8ms (ActiveRecord: 0.4ms | Allocations: 5402)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Payify::Payment with 'id'=1):
+  
+activerecord (7.0.5) lib/active_record/core.rb:284:in `find'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:26:in `set_object'
+activesupport (7.0.5) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.5) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.5) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.5) lib/active_support/callbacks.rb:116:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReservation Delete All (7.7ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[36mPayify::Payment Delete All (1.5ms)[0m  [1m[31mDELETE FROM "payify_payments"[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mReservation Create (0.2ms)[0m  [1m[32mINSERT INTO "reservations" ("id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["price", 1500.0], ["created_at", "2023-06-17 12:42:07.952575"], ["updated_at", "2023-06-17 12:42:07.952575"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."model_id" = ? AND "payify_payments"."model_type" = ? LIMIT ?[0m  [["model_id", 1], ["model_type", "Reservation"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPayify::Payment Create (0.1ms)[0m  [1m[32mINSERT INTO "payify_payments" ("amount", "status", "payment_method", "transaction_id", "paid_at", "model_type", "model_id", "created_at", "updated_at", "stripe_payment_inent_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 1500.0], ["status", 0], ["payment_method", nil], ["transaction_id", nil], ["paid_at", nil], ["model_type", "Reservation"], ["model_id", 1], ["created_at", "2023-06-17 12:42:07.982932"], ["updated_at", "2023-06-17 12:42:07.982932"], ["stripe_payment_inent_id", nil]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPayify::Payment Update (0.1ms)[0m  [1m[33mUPDATE "payify_payments" SET "id" = ?, "updated_at" = ? WHERE "payify_payments"."id" = ?[0m  [["id", 1], ["updated_at", "2023-06-17 12:42:07.993583"], ["id", 3]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2023-06-17 14:42:09 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPayify::Payment Update (0.6ms)[0m  [1m[33mUPDATE "payify_payments" SET "updated_at" = ?, "stripe_payment_inent_id" = ? WHERE "payify_payments"."id" = ?[0m  [["updated_at", "2023-06-17 12:42:09.421569"], ["stripe_payment_inent_id", 0], ["id", 1]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 0.6ms | Allocations: 70)
+Completed 200 OK in 410ms (Views: 3.3ms | ActiveRecord: 5.4ms | Allocations: 12379)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateReservation (20230612045842)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "price" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230612045842"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePayment (20230617122639)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "payify_payments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "amount" decimal(10,2) NOT NULL, "status" integer DEFAULT 0 NOT NULL, "payment_method" integer, "transaction_id" varchar, "paid_at" datetime(6), "model_type" varchar, "model_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230617122639"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddStripePaymentIntentId (20230617122640)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "payify_payments" ADD "stripe_payment_inent_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230617122640"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-06-17 12:44:19.378783"], ["updated_at", "2023-06-17 12:44:19.378783"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReservation Delete All (3.1ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[36mPayify::Payment Delete All (0.6ms)[0m  [1m[31mDELETE FROM "payify_payments"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mReservation Create (0.2ms)[0m  [1m[32mINSERT INTO "reservations" ("id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["price", 1500.0], ["created_at", "2023-06-17 12:44:24.483897"], ["updated_at", "2023-06-17 12:44:24.483897"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPayify::Payment Load (0.2ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."model_id" = ? AND "payify_payments"."model_type" = ? LIMIT ?[0m  [["model_id", 1], ["model_type", "Reservation"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPayify::Payment Create (0.2ms)[0m  [1m[32mINSERT INTO "payify_payments" ("amount", "status", "payment_method", "transaction_id", "paid_at", "model_type", "model_id", "created_at", "updated_at", "stripe_payment_inent_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 1500.0], ["status", 0], ["payment_method", nil], ["transaction_id", nil], ["paid_at", nil], ["model_type", "Reservation"], ["model_id", 1], ["created_at", "2023-06-17 12:44:24.511419"], ["updated_at", "2023-06-17 12:44:24.511419"], ["stripe_payment_inent_id", nil]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2023-06-17 14:44:35 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPayify::Payment Update (0.8ms)[0m  [1m[33mUPDATE "payify_payments" SET "updated_at" = ?, "stripe_payment_inent_id" = ? WHERE "payify_payments"."id" = ?[0m  [["updated_at", "2023-06-17 12:44:36.374491"], ["stripe_payment_inent_id", 0], ["id", 1]]
+  [1m[36mTRANSACTION (16.2ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 413ms (ActiveRecord: 17.9ms | Allocations: 12348)
+
+
+  
+NoMethodError (undefined method `stripe_client_secret=' for #<Payify::Payment:0x00007fc168221218>
+Did you mean?  stripe_client):
+  
+activemodel (7.0.5) lib/active_model/attribute_methods.rb:450:in `method_missing'
+activerecord (7.0.5) lib/active_record/persistence.rb:756:in `public_send'
+activerecord (7.0.5) lib/active_record/persistence.rb:756:in `update_attribute'
+/home/nlopez/Project/payify/app/models/concerns/payify/stripe_payment_concern.rb:17:in `stripe_init_intent'
+/home/nlopez/Project/payify/app/controllers/payify/payments_controller.rb:6:in `new'
+actionpack (7.0.5) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.5) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+Started GET "/" for ::1 at 2023-06-17 14:44:53 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 0.5ms | Allocations: 231)
+Completed 200 OK in 945ms (Views: 2.5ms | ActiveRecord: 0.5ms | Allocations: 711968)
+
+
+Started GET "/" for ::1 at 2023-06-17 14:57:21 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.3ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 0.8ms | Allocations: 102)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 2.4ms | Allocations: 319)
+Completed 200 OK in 14ms (Views: 5.4ms | ActiveRecord: 1.2ms | Allocations: 2167)
+
+
+Started GET "/" for ::1 at 2023-06-17 14:57:31 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.3ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 0.3ms | Allocations: 100)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 1.2ms | Allocations: 310)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 1993)
+
+
+Started GET "/" for ::1 at 2023-06-17 14:59:40 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.2ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 0.7ms | Allocations: 107)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 2.4ms | Allocations: 317)
+Completed 200 OK in 12ms (Views: 5.2ms | ActiveRecord: 0.2ms | Allocations: 2000)
+
+
+Started GET "/" for ::1 at 2023-06-17 15:02:33 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 6.4ms | Allocations: 1801)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 7.0ms | Allocations: 2012)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.1ms | Allocations: 3664)
+
+
+  
+ActionView::Template::Error (undefined method `stripe_publishable_key' for Payify:Module
+Did you mean?  stripe_api_key):
+    1: <script src="https://js.stripe.com/v3/"></script>
+    2: <script>
+    3:   const stripe = Stripe("<%= Payify.stripe_publishable_key %>");
+    4: </script>
+    5: 
+    6: <form id="payment-form">
+  
+/home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb:3
+actionview (7.0.5) lib/action_view/base.rb:244:in `public_send'
+actionview (7.0.5) lib/action_view/base.rb:244:in `_run'
+actionview (7.0.5) lib/action_view/template.rb:157:in `block in render'
+activesupport (7.0.5) lib/active_support/notifications.rb:208:in `instrument'
+actionview (7.0.5) lib/action_view/template.rb:361:in `instrument_render_template'
+actionview (7.0.5) lib/action_view/template.rb:155:in `render'
+actionview (7.0.5) lib/action_view/renderer/partial_renderer.rb:251:in `block in render_partial_template'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionview (7.0.5) lib/action_view/renderer/partial_renderer.rb:246:in `render_partial_template'
+actionview (7.0.5) lib/action_view/renderer/partial_renderer.rb:237:in `render'
+actionview (7.0.5) lib/action_view/renderer/renderer.rb:81:in `render_partial_to_object'
+actionview (7.0.5) lib/action_view/renderer/renderer.rb:53:in `render_partial'
+actionview (7.0.5) lib/action_view/helpers/rendering_helper.rb:44:in `render'
+/home/nlopez/Project/payify/app/views/payify/payments/new.html.erb:1
+actionview (7.0.5) lib/action_view/base.rb:244:in `public_send'
+actionview (7.0.5) lib/action_view/base.rb:244:in `_run'
+actionview (7.0.5) lib/action_view/template.rb:157:in `block in render'
+activesupport (7.0.5) lib/active_support/notifications.rb:208:in `instrument'
+actionview (7.0.5) lib/action_view/template.rb:361:in `instrument_render_template'
+actionview (7.0.5) lib/action_view/template.rb:155:in `render'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:65:in `block (2 levels) in render_template'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:60:in `block in render_template'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:79:in `render_with_layout'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:59:in `render_template'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:11:in `render'
+actionview (7.0.5) lib/action_view/renderer/renderer.rb:61:in `render_template_to_object'
+actionview (7.0.5) lib/action_view/renderer/renderer.rb:29:in `render_to_object'
+actionview (7.0.5) lib/action_view/rendering.rb:117:in `block in _render_template'
+actionview (7.0.5) lib/action_view/base.rb:270:in `in_rendering_context'
+actionview (7.0.5) lib/action_view/rendering.rb:116:in `_render_template'
+actionpack (7.0.5) lib/action_controller/metal/streaming.rb:216:in `_render_template'
+actionview (7.0.5) lib/action_view/rendering.rb:103:in `render_to_body'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:158:in `render_to_body'
+actionpack (7.0.5) lib/action_controller/metal/renderers.rb:141:in `render_to_body'
+actionpack (7.0.5) lib/abstract_controller/rendering.rb:27:in `render'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:139:in `render'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:22:in `block (2 levels) in render'
+/home/nlopez/.rvm/rubies/ruby-2.7.5/lib/ruby/2.7.0/benchmark.rb:308:in `realtime'
+activesupport (7.0.5) lib/active_support/core_ext/benchmark.rb:14:in `ms'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:22:in `block in render'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:91:in `cleanup_view_runtime'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:34:in `cleanup_view_runtime'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:21:in `render'
+actionpack (7.0.5) lib/action_controller/metal/implicit_render.rb:35:in `default_render'
+actionpack (7.0.5) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.5) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+Started GET "/" for ::1 at 2023-06-17 15:02:42 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 0.2ms | Allocations: 110)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 1.3ms | Allocations: 489)
+Completed 200 OK in 942ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 712230)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateReservation (20230612045842)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "price" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230612045842"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePayment (20230617122639)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "payify_payments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "amount" decimal(10,2) NOT NULL, "status" integer DEFAULT 0 NOT NULL, "payment_method" integer, "transaction_id" varchar, "paid_at" datetime(6), "model_type" varchar, "model_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230617122639"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddStripePaymentIntentId (20230617122640)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "payify_payments" ADD "stripe_payment_inent_id" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "payify_payments" ADD "stripe_client_secret" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230617122640"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-06-17 13:04:51.354369"], ["updated_at", "2023-06-17 13:04:51.354369"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReservation Delete All (7.3ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[36mPayify::Payment Delete All (0.7ms)[0m  [1m[31mDELETE FROM "payify_payments"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mReservation Create (0.3ms)[0m  [1m[32mINSERT INTO "reservations" ("id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["price", 1500.0], ["created_at", "2023-06-17 13:04:55.257222"], ["updated_at", "2023-06-17 13:04:55.257222"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."model_id" = ? AND "payify_payments"."model_type" = ? LIMIT ?[0m  [["model_id", 1], ["model_type", "Reservation"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPayify::Payment Create (0.2ms)[0m  [1m[32mINSERT INTO "payify_payments" ("amount", "status", "payment_method", "transaction_id", "paid_at", "model_type", "model_id", "created_at", "updated_at", "stripe_payment_inent_id", "stripe_client_secret") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 1500.0], ["status", 0], ["payment_method", nil], ["transaction_id", nil], ["paid_at", nil], ["model_type", "Reservation"], ["model_id", 1], ["created_at", "2023-06-17 13:04:55.287971"], ["updated_at", "2023-06-17 13:04:55.287971"], ["stripe_payment_inent_id", nil], ["stripe_client_secret", "[FILTERED]"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2023-06-17 15:05:37 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPayify::Payment Update (0.6ms)[0m  [1m[33mUPDATE "payify_payments" SET "updated_at" = ?, "stripe_payment_inent_id" = ? WHERE "payify_payments"."id" = ?[0m  [["updated_at", "2023-06-17 13:05:37.915054"], ["stripe_payment_inent_id", "pi_3NJyovB5v0xlyBT80hDdKkxo"], ["id", 1]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPayify::Payment Update (0.5ms)[0m  [1m[33mUPDATE "payify_payments" SET "updated_at" = ?, "stripe_client_secret" = ? WHERE "payify_payments"."id" = ?[0m  [["updated_at", "2023-06-17 13:05:37.932336"], ["stripe_client_secret", "[FILTERED]"], ["id", 1]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 0.2ms | Allocations: 110)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 0.9ms | Allocations: 489)
+Completed 200 OK in 1375ms (Views: 2.8ms | ActiveRecord: 8.3ms | Allocations: 720239)
+
+
+Started GET "/" for ::1 at 2023-06-17 15:05:56 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 0.3ms | Allocations: 134)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 0.9ms | Allocations: 344)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 2031)
+
+
+Started GET "/" for ::1 at 2023-06-17 15:06:07 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 0.2ms | Allocations: 134)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 0.7ms | Allocations: 344)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 2031)
+
+
+Started GET "/" for ::1 at 2023-06-17 15:08:20 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 0.2ms | Allocations: 132)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 0.7ms | Allocations: 363)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 2033)
+
+
+Started GET "/" for ::1 at 2023-06-17 15:09:08 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 0.2ms | Allocations: 132)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 0.7ms | Allocations: 367)
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 2054)
+
+
+Started GET "/" for ::1 at 2023-06-17 15:09:38 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.2ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 0.4ms | Allocations: 132)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 1.8ms | Allocations: 365)
+Completed 200 OK in 12ms (Views: 5.4ms | ActiveRecord: 0.2ms | Allocations: 2035)
+
+
+Started GET "/" for ::1 at 2023-06-17 15:10:27 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 0.3ms | Allocations: 132)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 2.4ms | Allocations: 366)
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 0.1ms | Allocations: 2053)
+
+
+Started GET "/" for ::1 at 2023-06-17 15:14:46 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 9.2ms | Allocations: 3839)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 9.9ms | Allocations: 4078)
+Completed 500 Internal Server Error in 927ms (ActiveRecord: 0.8ms | Allocations: 704242)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `create_payment' for #<ActionView::Base:0x0000000000db10>):
+    1: <script src="https://js.stripe.com/v3/"></script>
+    2: 
+    3: <%= form_with(id: "payment-form", url: create_payment, method: "post") do |form| %>
+    4:   <div id="payment-element">
+    5:   </div>
+    6: 
+  
+/home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb:3
+actionview (7.0.5) lib/action_view/base.rb:244:in `public_send'
+actionview (7.0.5) lib/action_view/base.rb:244:in `_run'
+actionview (7.0.5) lib/action_view/template.rb:157:in `block in render'
+activesupport (7.0.5) lib/active_support/notifications.rb:208:in `instrument'
+actionview (7.0.5) lib/action_view/template.rb:361:in `instrument_render_template'
+actionview (7.0.5) lib/action_view/template.rb:155:in `render'
+actionview (7.0.5) lib/action_view/renderer/partial_renderer.rb:251:in `block in render_partial_template'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionview (7.0.5) lib/action_view/renderer/partial_renderer.rb:246:in `render_partial_template'
+actionview (7.0.5) lib/action_view/renderer/partial_renderer.rb:237:in `render'
+actionview (7.0.5) lib/action_view/renderer/renderer.rb:81:in `render_partial_to_object'
+actionview (7.0.5) lib/action_view/renderer/renderer.rb:53:in `render_partial'
+actionview (7.0.5) lib/action_view/helpers/rendering_helper.rb:44:in `render'
+/home/nlopez/Project/payify/app/views/payify/payments/new.html.erb:14
+actionview (7.0.5) lib/action_view/base.rb:244:in `public_send'
+actionview (7.0.5) lib/action_view/base.rb:244:in `_run'
+actionview (7.0.5) lib/action_view/template.rb:157:in `block in render'
+activesupport (7.0.5) lib/active_support/notifications.rb:208:in `instrument'
+actionview (7.0.5) lib/action_view/template.rb:361:in `instrument_render_template'
+actionview (7.0.5) lib/action_view/template.rb:155:in `render'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:65:in `block (2 levels) in render_template'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:60:in `block in render_template'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:79:in `render_with_layout'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:59:in `render_template'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:11:in `render'
+actionview (7.0.5) lib/action_view/renderer/renderer.rb:61:in `render_template_to_object'
+actionview (7.0.5) lib/action_view/renderer/renderer.rb:29:in `render_to_object'
+actionview (7.0.5) lib/action_view/rendering.rb:117:in `block in _render_template'
+actionview (7.0.5) lib/action_view/base.rb:270:in `in_rendering_context'
+actionview (7.0.5) lib/action_view/rendering.rb:116:in `_render_template'
+actionpack (7.0.5) lib/action_controller/metal/streaming.rb:216:in `_render_template'
+actionview (7.0.5) lib/action_view/rendering.rb:103:in `render_to_body'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:158:in `render_to_body'
+actionpack (7.0.5) lib/action_controller/metal/renderers.rb:141:in `render_to_body'
+actionpack (7.0.5) lib/abstract_controller/rendering.rb:27:in `render'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:139:in `render'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:22:in `block (2 levels) in render'
+/home/nlopez/.rvm/rubies/ruby-2.7.5/lib/ruby/2.7.0/benchmark.rb:308:in `realtime'
+activesupport (7.0.5) lib/active_support/core_ext/benchmark.rb:14:in `ms'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:22:in `block in render'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:91:in `cleanup_view_runtime'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:34:in `cleanup_view_runtime'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:21:in `render'
+actionpack (7.0.5) lib/action_controller/metal/implicit_render.rb:35:in `default_render'
+actionpack (7.0.5) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.5) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+Started GET "/" for ::1 at 2023-06-17 15:15:02 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 17.1ms | Allocations: 3146)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 17.7ms | Allocations: 3380)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.1ms | Allocations: 5032)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `create_payment_path' for #<ActionView::Base:0x0000000000dcc8>):
+    1: <script src="https://js.stripe.com/v3/"></script>
+    2: 
+    3: <%= form_with(id: "payment-form", url: create_payment_path, method: "post") do |form| %>
+    4:   <div id="payment-element">
+    5:   </div>
+    6: 
+  
+/home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb:3
+actionview (7.0.5) lib/action_view/base.rb:244:in `public_send'
+actionview (7.0.5) lib/action_view/base.rb:244:in `_run'
+actionview (7.0.5) lib/action_view/template.rb:157:in `block in render'
+activesupport (7.0.5) lib/active_support/notifications.rb:208:in `instrument'
+actionview (7.0.5) lib/action_view/template.rb:361:in `instrument_render_template'
+actionview (7.0.5) lib/action_view/template.rb:155:in `render'
+actionview (7.0.5) lib/action_view/renderer/partial_renderer.rb:251:in `block in render_partial_template'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionview (7.0.5) lib/action_view/renderer/partial_renderer.rb:246:in `render_partial_template'
+actionview (7.0.5) lib/action_view/renderer/partial_renderer.rb:237:in `render'
+actionview (7.0.5) lib/action_view/renderer/renderer.rb:81:in `render_partial_to_object'
+actionview (7.0.5) lib/action_view/renderer/renderer.rb:53:in `render_partial'
+actionview (7.0.5) lib/action_view/helpers/rendering_helper.rb:44:in `render'
+/home/nlopez/Project/payify/app/views/payify/payments/new.html.erb:14
+actionview (7.0.5) lib/action_view/base.rb:244:in `public_send'
+actionview (7.0.5) lib/action_view/base.rb:244:in `_run'
+actionview (7.0.5) lib/action_view/template.rb:157:in `block in render'
+activesupport (7.0.5) lib/active_support/notifications.rb:208:in `instrument'
+actionview (7.0.5) lib/action_view/template.rb:361:in `instrument_render_template'
+actionview (7.0.5) lib/action_view/template.rb:155:in `render'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:65:in `block (2 levels) in render_template'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:60:in `block in render_template'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:79:in `render_with_layout'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:59:in `render_template'
+actionview (7.0.5) lib/action_view/renderer/template_renderer.rb:11:in `render'
+actionview (7.0.5) lib/action_view/renderer/renderer.rb:61:in `render_template_to_object'
+actionview (7.0.5) lib/action_view/renderer/renderer.rb:29:in `render_to_object'
+actionview (7.0.5) lib/action_view/rendering.rb:117:in `block in _render_template'
+actionview (7.0.5) lib/action_view/base.rb:270:in `in_rendering_context'
+actionview (7.0.5) lib/action_view/rendering.rb:116:in `_render_template'
+actionpack (7.0.5) lib/action_controller/metal/streaming.rb:216:in `_render_template'
+actionview (7.0.5) lib/action_view/rendering.rb:103:in `render_to_body'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:158:in `render_to_body'
+actionpack (7.0.5) lib/action_controller/metal/renderers.rb:141:in `render_to_body'
+actionpack (7.0.5) lib/abstract_controller/rendering.rb:27:in `render'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:139:in `render'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:22:in `block (2 levels) in render'
+/home/nlopez/.rvm/rubies/ruby-2.7.5/lib/ruby/2.7.0/benchmark.rb:308:in `realtime'
+activesupport (7.0.5) lib/active_support/core_ext/benchmark.rb:14:in `ms'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:22:in `block in render'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:91:in `cleanup_view_runtime'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:34:in `cleanup_view_runtime'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:21:in `render'
+actionpack (7.0.5) lib/action_controller/metal/implicit_render.rb:35:in `default_render'
+actionpack (7.0.5) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.5) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.5) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.5) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.5) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.5) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.5) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.5) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.5) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.5) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.5) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (6.3.0) lib/puma/configuration.rb:270:in `call'
+puma (6.3.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.3.0) lib/puma/thread_pool.rb:344:in `with_force_shutdown'
+puma (6.3.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.3.0) lib/puma/server.rb:443:in `process_client'
+puma (6.3.0) lib/puma/server.rb:245:in `block in run'
+puma (6.3.0) lib/puma/thread_pool.rb:151:in `block in spawn_thread'
+Started GET "/" for ::1 at 2023-06-17 15:16:17 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.2ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 1.5ms | Allocations: 635)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 1.8ms | Allocations: 690)
+Completed 200 OK in 12ms (Views: 2.6ms | ActiveRecord: 1.0ms | Allocations: 6287)
+
+
+Started GET "/" for ::1 at 2023-06-17 15:16:29 +0200
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.1ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 1.3ms | Allocations: 684)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 2.0ms | Allocations: 916)
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.1ms | Allocations: 2587)
+
+
+Started GET "/" for ::1 at 2023-06-17 16:02:56 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.3ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/_form.html.erb (Duration: 2.3ms | Allocations: 703)
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 2.8ms | Allocations: 936)
+Completed 200 OK in 11ms (Views: 3.7ms | ActiveRecord: 0.3ms | Allocations: 6365)
+
+

@@ -1,0 +1,24 @@
+<script src="https://js.stripe.com/v3/"></script>
+
+<%= form_with(id: "payment-form", url: create_payment_path, method: "post") do |form| %>
+  <div id="payment-element">
+  </div>
+
+  <div id="error-message">
+  </div>
+
+  <%= form.submit I18n.t("payments.submit"), id: "submit", class: "btn btn-primary w-100 mt-4" %>
+<% end %>
+
+<script>
+  const stripe = Stripe("<%= Payify.stripe_publishable_key %>");
+
+  const options = {
+    clientSecret: "<%= payment.stripe_client_secret %>",
+  };
+
+  const elements = stripe.elements(options);
+
+  const paymentElement = elements.create("payment");
+  paymentElement.mount("#payment-element");
+</script>

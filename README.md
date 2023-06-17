@@ -2,6 +2,8 @@
 
 PayifyRails is a Ruby gem that simplifies payment integration into Ruby on Rails projects. It allows to easily add payment functionality to your models. For example, by applying the HasPaymentConcern to a reservation model, you can manage the payment process for reservations seamlessly.
 
+![Screenshot](./app/assets/images/payify/screenshot.png)
+
 ## Status 🚧
 
 This gem is under construction. Stay tuned for exciting updates as I continue to shape it.
@@ -30,16 +32,25 @@ bundle install
 
 ## Configuration
 
-By default, Payify uses Stripe as the payment gateway. You can configure your Stripe API credentials in your Rails application's configuration file (config/application.rb or config/environments/*.rb).
+By default, Payify uses Stripe as the payment gateway. You can configure the currency using an initializer.
 
 ```ruby
-# config/application.rb
-config.payify.stripe_api_key = 'YOUR_STRIPE_API_KEY'
-config.payify.currency = 'usd'
-config.payify.default_tax_rates_id = 'txr_1234567890'
+# initializers/payify.rb
+Payify.setup do |config|
+  config.currency = "usd"
+  config.default_tax_rates_id = "eur"
+end
 ```
 
 To handle VAT or different tax rates on your payments, you need to create tax rates on Stripe and define the default_tax_rates_id or, alternatively, define the tax_rates_id method on your payment-related models. Leave it empty if you don't manage any taxes.
+
+You can set your Stripe API credentials using environment variables. (Secret key, Publishable key)
+
+```
+# .env
+STRIPE_API_KEY="..."
+STRIPE_PUBLISHABLE_KEY="..."
+```
 
 ## Usage
 
@@ -58,6 +69,25 @@ class Reservation < ApplicationRecord
     'txr_1234567890'
   end
 end
+```
+
+When you want to request a payment for a model on which you added the concern, you just need to call the create_payment method.
+
+```ruby
+reservation_1.create_payment
+```
+
+Then you can find the id of the payment (pending) thanks to payment.id.
+
+```ruby
+reservation_1.payment.id
+```
+
+Now you just have to redirect the user to `/payments/:id/new` or include the payment form in your page.
+
+```ruby
+# reservation/show.html.erb
+<%= render "payify/payments/form", payment: @payment %>
 ```
 
 ## Tests

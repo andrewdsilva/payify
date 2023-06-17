@@ -6,6 +6,7 @@ ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), "../")
 
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
+require "json"
 
 Dir[Rails.root.join("..", "..", "spec", "support", "**", "*.rb")].sort.each { |f| require f }
 

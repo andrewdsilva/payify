@@ -8,6 +8,9 @@ module Payify
 
     def create_payment
       build_payment(amount: amount_to_pay)
+
+      payment.save
+      payment
     end
 
     def cancel_payment
