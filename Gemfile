@@ -20,6 +20,7 @@ end
 
 gem "rake", "~> 13.0.6"
 
+gem "dotenv-rails", "~> 2.8.1"
 gem "money", "~> 6.16"
-
+gem "stripe", "~> 8.5.0"
 gem "timecop", "~> 0.9.6"

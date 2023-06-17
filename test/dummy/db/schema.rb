@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_12_045842) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_17_052430) do
   create_table "payify_payments", force: :cascade do |t|
     t.decimal "amount", precision: 10, scale: 2, null: false
     t.integer "status", default: 0, null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_045842) do
     t.integer "model_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "stripe_payment_inent_id"
   end
 
   create_table "reservations", force: :cascade do |t|

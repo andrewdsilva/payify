@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount Payify::Engine => "/payify"
+  mount Payify::Engine => ""
 end

@@ -1,5 +1,7 @@
 module Payify
   class Payment < ApplicationRecord
+    include ::Payify::StripePaymentConcern
+
     enum status: { pending: 0, paid: 1, failed: 2 }
     enum payment_method: { stripe: 0 }
 
