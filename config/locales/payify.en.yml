@@ -1,3 +1,7 @@
 en:
   payments:
     submit: Submit
+    already_paid: Payment has already been completed.
+    complete:
+      pending: Payment pending.
+      paid: Successful payment!

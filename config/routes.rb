@@ -2,7 +2,7 @@
   resources :payments do
     member do
       get "new"
-      post "create", as: "create"
+      get "complete", as: "complete"
     end
   end
 end

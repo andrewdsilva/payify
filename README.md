@@ -46,7 +46,7 @@ To handle VAT or different tax rates on your payments, you need to create tax ra
 
 You can set your Stripe API credentials using environment variables. (Secret key, Publishable key)
 
-```
+```ruby
 # .env
 STRIPE_API_KEY="..."
 STRIPE_PUBLISHABLE_KEY="..."
@@ -90,9 +90,54 @@ Now you just have to redirect the user to `/payments/:id/new` or include the pay
 <%= render "payify/payments/form", payment: @payment %>
 ```
 
+After completing the payment process, the user will be redirected to:
+
+```
+/payments/:id/complete
+```
+
+The application will then verify the payment status with Stripe. You can do it manually calling the following method:
+
+```ruby
+@payment.stripe_confirm_payment
+```
+
+If the payment has been successfully processed, a confirmation message will be displayed to the user. The payment object's `paid?` attribute will be set to `true`.
+
+To customize the page that displays the payment status, you can create the following file:
+
+```
+views/payify/payments/complete.html.erb
+```
+
+If you prefer using the Payify API, you can make a request to the following endpoint to update the payment status and retrieve its current state:
+
+```
+/payments/:id/complete.json
+```
+## Status
+
+You can access the payment status using `@payment.status`. The possible statuses are:
+
+- `pending`: The payment is still being processed.
+- `paid`: The payment has been successfully completed.
+- `failed`: The payment has failed.
+
 ## Tests
 
 To run the tests, execute `rspec` command.
+
+You can test the payment process in your web browser by following these steps:
+
+1. Navigate to the `test/dummy` directory.
+2. Run the following commands:
+   - `rails db:create`
+   - `rails db:migrate`
+   - `rails db:seed`
+   - `rails s`
+3. Open your browser and go to: [http://localhost:3000/](http://localhost:3000/).
+
+Each time you run the seed command, your test database will be reset with a reservation that has a payment with an ID of 1. This allows you to test the payment process at the following address: [http://localhost:3000/payments/1/new](http://localhost:3000/payments/1/new).
 
 ## Contributing
 

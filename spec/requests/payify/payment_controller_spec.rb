@@ -26,16 +26,19 @@ RSpec.describe "Payify::PaymentControllers", type: :request do
       payment = create(:payment_1)
       payment.stripe_init_intent
 
-      post "/payments/#{payment.id}/create", params: { id: payment.id, payment: {} }
+      get "/payments/#{payment.id}/complete", params: { id: payment.id, payment: {} }
+
+      expect(payment.reload.status).to eq("pending")
     end
 
     it "Make payment (api)" do
       payment = create(:payment_1)
       payment.stripe_init_intent
 
-      post "/payments/#{payment.id}/create.json", params: { id: payment.id, payment: {} }
+      get "/payments/#{payment.id}/complete.json", params: { id: payment.id, payment: {} }
 
       expect(response).to have_http_status(200)
+      expect(json["status"]).to eq("pending")
     end
   end
 end

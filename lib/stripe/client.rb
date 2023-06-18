@@ -20,5 +20,9 @@ module Stripe
 
       Stripe::PaymentIntent.create(infos)
     end
+
+    def find_intent(payment_intent_id)
+      Stripe::PaymentIntent.retrieve(payment_intent_id)
+    end
   end
 end

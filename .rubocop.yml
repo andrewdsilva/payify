@@ -62,3 +62,5 @@ Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
 Layout/ArrayAlignment:
   EnforcedStyle: with_fixed_indentation
+Style/ClassVars:
+  Enabled: false

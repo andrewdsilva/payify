@@ -11,8 +11,8 @@ gem "sprockets-rails"
 gem "sqlite3"
 
 group :development, :test do
-  gem "rspec-rails"
   gem "rails-controller-testing"
+  gem "rspec-rails"
   gem "rubocop", "~> 1.21"
 
   gem "factory_bot_rails"

@@ -18,6 +18,12 @@ module Payify
     end
 
     def stripe_confirm_payment
+      intent = stripe_client.find_intent(stripe_payment_inent_id)
+
+      return unless intent["status"] == "succeeded"
+
+      update_attribute(:paid_at, Time.now)
+      update_attribute(:status, Payify::Payment.statuses[:paid])
     end
   end
 end
