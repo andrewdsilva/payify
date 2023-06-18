@@ -4,10 +4,6 @@ PayifyRails is a Ruby gem that simplifies payment integration into Ruby on Rails
 
 ![Screenshot](./app/assets/images/payify/screenshot.png)
 
-## Status 🚧
-
-This gem is under construction. Stay tuned for exciting updates as I continue to shape it.
-
 ## Installation
 
 To install the gem add it into a Gemfile (Bundler):
@@ -26,13 +22,16 @@ bundle install
 
 - Includes a Payment model
 - Provides concerns to easily add a payment system to your model
-- Allows configuration of payment modes (initially supports Stripe)
+- Enables payment with Stripe
+- Offers a payment form to integrate into your application
+- Allows payment status to be checked via an api route
+- Allows configuration of payment (currency, VAT)
 - Provides a user interface for payment processing
 - Enables management of payment status (pending, paid)
 
 ## Configuration
 
-By default, Payify uses Stripe as the payment gateway. You can configure the currency using an initializer.
+For now, Payify uses Stripe as the payment gateway. You can configure the currency using an initializer.
 
 ```ruby
 # initializers/payify.rb
@@ -77,7 +76,7 @@ When you want to request a payment for a model on which you added the concern, y
 reservation_1.create_payment
 ```
 
-Then you can find the id of the payment (pending) thanks to payment.id.
+Then you can find the id of the new pending payment with payment.id.
 
 ```ruby
 reservation_1.payment.id
@@ -102,12 +101,22 @@ The application will then verify the payment status with Stripe. You can do it m
 @payment.stripe_confirm_payment
 ```
 
-If the payment has been successfully processed, a confirmation message will be displayed to the user. The payment object's `paid?` attribute will be set to `true`.
+If the payment has been successfully processed, a confirmation message will be displayed to the user. The payment method `paid?` will return `true`.
 
 To customize the page that displays the payment status, you can create the following file:
 
-```
-views/payify/payments/complete.html.erb
+```ruby
+# views/payify/payments/complete.html.erb
+
+<% if @payment.paid? %>
+  <div class="alert alert-success" role="alert">
+    <%= I18n.t("payments.complete.paid") %>
+  </div>
+<% else %>
+  <div class="alert alert-danger" role="alert">
+    <%= I18n.t("payments.complete.pending") %>
+  </div>
+<% end %>
 ```
 
 If you prefer using the Payify API, you can make a request to the following endpoint to update the payment status and retrieve its current state:
