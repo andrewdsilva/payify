@@ -119,11 +119,18 @@ To customize the page that displays the payment status, you can create the follo
 <% end %>
 ```
 
-If you prefer using the Payify API, you can make a request to the following endpoint to update the payment status and retrieve its current state:
+## API
+
+If you prefer using the Payify API, after creating the payment object, you can initialize a new Stripe payment by making a request to: `/payments/:id/new.json`
+
+This request will return a JSON response containing the `stripe_payment_intent_id` and `stripe_client_secret` required to process a payment using Stripe.
+
+After making the payment, you can make a request to the following endpoint to update the payment status and retrieve its current state:
 
 ```
 /payments/:id/complete.json
 ```
+
 ## Status
 
 You can access the payment status using `@payment.status`. The possible statuses are:
