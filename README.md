@@ -9,7 +9,7 @@ PayifyRails is a Ruby gem that simplifies payment integration into Ruby on Rails
 To install the gem add it into a Gemfile (Bundler):
 
 ```ruby
-gem 'payify', git: 'https://github.com/andrewdsilva/payify'
+gem 'payify', '~> 0.1.0'
 ```
 
 And then execute:
