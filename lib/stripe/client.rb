@@ -10,12 +10,15 @@ module Stripe
       @stripe ||= Stripe::StripeClient.new
     end
 
-    def create_payment_intent(amount, object_invoice = "")
+    def create_payment_intent(amount, tax_id = nil, object_invoice = "")
       infos = {
         amount: (amount * 100).to_i,
         currency: Payify.currency,
         description: object_invoice,
-        setup_future_usage: "off_session"
+        setup_future_usage: "off_session",
+        metadata: {
+          "tax_id": tax_id
+        }
       }
 
       Stripe::PaymentIntent.create(infos)
