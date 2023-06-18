@@ -2745,3 +2745,13 @@ Processing by Payify::PaymentsController#new as HTML
 Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 1494)
 
 
+Started GET "/" for ::1 at 2023-06-18 14:23:05 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Payify::PaymentsController#new as HTML
+  Parameters: {"id"=>1}
+  [1m[36mPayify::Payment Load (0.3ms)[0m  [1m[34mSELECT "payify_payments".* FROM "payify_payments" WHERE "payify_payments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb
+  Rendered /home/nlopez/Project/payify/app/views/payify/payments/new.html.erb (Duration: 2.2ms | Allocations: 529)
+Completed 200 OK in 1000ms (Views: 5.0ms | ActiveRecord: 0.7ms | Allocations: 712921)
+
+

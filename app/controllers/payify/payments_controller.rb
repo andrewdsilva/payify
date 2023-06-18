@@ -12,7 +12,7 @@ module Payify
     end
 
     def complete
-      @payment.stripe_confirm_payment
+      @payment.stripe_confirm_payment unless @payment.paid?
 
       respond_to do |format|
         format.html
