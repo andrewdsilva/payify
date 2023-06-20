@@ -1,6 +1,6 @@
 <script src="https://js.stripe.com/v3/"></script>
 
-<%= form_with(id: "payment-form", url: complete_payment_path, method: "post") do |form| %>
+<%= form_with(id: "payment-form", url: payify.complete_payment_path, method: "post") do |form| %>
   <div id="payment-element">
   </div>
 
@@ -30,7 +30,7 @@
     const {error} = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "<%= request.base_url %>/payments/<%= payment.id %>/complete",
+        return_url: "<%= request.base_url %>/payify/payments/<%= payment.id %>/complete",
       },
     });
 

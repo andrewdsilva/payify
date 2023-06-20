@@ -5,7 +5,7 @@ RSpec.describe "Payify::PaymentControllers", type: :request do
     it "New payment form" do
       payment = create(:payment_1)
 
-      get "/payments/#{payment.id}/new", params: { id: payment.id }
+      get "/payify/payments/#{payment.id}/new", params: { id: payment.id }
 
       expect(response).to render_template("payify/payments/new")
     end
@@ -13,7 +13,7 @@ RSpec.describe "Payify::PaymentControllers", type: :request do
     it "New payment (api)" do
       payment = create(:payment_1)
 
-      get "/payments/#{payment.id}/new.json", params: { id: payment.id }
+      get "/payify/payments/#{payment.id}/new.json", params: { id: payment.id }
 
       expect(response).to have_http_status(200)
       expect(json["paid"]).to eq(false)
@@ -27,7 +27,7 @@ RSpec.describe "Payify::PaymentControllers", type: :request do
       payment.stripe_init_intent
 
       # Status is pending before payment
-      get "/payments/#{payment.id}/complete"
+      get "/payify/payments/#{payment.id}/complete"
 
       expect(payment.reload.status).to eq("pending")
 
@@ -39,7 +39,7 @@ RSpec.describe "Payify::PaymentControllers", type: :request do
       payment.stripe_confirm_payment
 
       # Payment status is now paid
-      get "/payments/#{payment.id}/complete"
+      get "/payify/payments/#{payment.id}/complete"
 
       expect(payment.reload.status).to eq("paid")
     end
@@ -49,7 +49,7 @@ RSpec.describe "Payify::PaymentControllers", type: :request do
       payment.stripe_init_intent
 
       # Status is pending before payment
-      get "/payments/#{payment.id}/complete.json"
+      get "/payify/payments/#{payment.id}/complete.json"
 
       expect(response).to have_http_status(200)
       expect(json["status"]).to eq("pending")
@@ -62,24 +62,9 @@ RSpec.describe "Payify::PaymentControllers", type: :request do
       payment.stripe_confirm_payment
 
       # Payment status is now paid
-      get "/payments/#{payment.id}/complete.json"
+      get "/payify/payments/#{payment.id}/complete.json"
 
       expect(payment.reload.status).to eq("paid")
-    end
-
-    it "Init payment with tax" do
-      tax_id = "txr_1NKL7AB5v0xlyBT808R67YgC"
-
-      reservation = create(:reservation_1)
-      allow(reservation).to receive(:tax_rates_id).and_return(tax_id)
-
-      payment = reservation.create_payment
-      payment.stripe_init_intent
-
-      # Check tax on intent
-      intent = payment.stripe_client.find_intent(payment.stripe_payment_inent_id)
-
-      expect(intent["metadata"]["tax_id"]).to eq(tax_id)
     end
   end
 end

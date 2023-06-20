@@ -38,4 +38,19 @@ RSpec.describe ::Payify::Payment, type: :model do
     expect(subject.can_destroy?).to be_truthy
     expect { subject.destroy }.to change(::Payify::Payment, :count).by(-1)
   end
+
+  it "Init payment with tax" do
+    tax_id = "txr_1NKL7AB5v0xlyBT808R67YgC"
+
+    reservation = create(:reservation_1)
+    allow(reservation).to receive(:tax_rates_id).and_return(tax_id)
+
+    payment = reservation.create_payment
+    payment.stripe_init_intent
+
+    # Check tax on intent
+    intent = payment.stripe_client.find_intent(payment.stripe_payment_inent_id)
+
+    expect(intent["metadata"]["tax_id"]).to eq(tax_id)
+  end
 end
