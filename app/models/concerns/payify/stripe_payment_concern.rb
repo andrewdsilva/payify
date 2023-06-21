@@ -5,7 +5,7 @@ module Payify
     extend ActiveSupport::Concern
 
     def stripe_client
-      @stripe_client ||= ::StripeApi::Client.new
+      @stripe_client ||= StripeApi::Client.new
     end
 
     def stripe_init_intent
