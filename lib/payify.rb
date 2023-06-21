@@ -3,7 +3,6 @@
 require_relative "payify/version"
 require "payify/engine"
 require "dotenv/load"
-require "stripe"
 
 module Payify
   class Error < StandardError; end

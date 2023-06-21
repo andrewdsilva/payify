@@ -1,11 +1,11 @@
-require "stripe/client"
+require "stripe_api/client"
 
 module Payify
   module StripePaymentConcern
     extend ActiveSupport::Concern
 
     def stripe_client
-      @stripe_client ||= ::Stripe::Client.new
+      @stripe_client ||= ::StripeApi::Client.new
     end
 
     def stripe_init_intent
