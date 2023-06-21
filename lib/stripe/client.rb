@@ -1,13 +1,13 @@
-module StripeApi
+module Stripe
   class Client
     def initialize
       stripe
 
-      ::Stripe.api_key = Payify.stripe_api_key
+      Stripe.api_key = Payify.stripe_api_key
     end
 
     def stripe
-      @stripe ||= ::Stripe::StripeClient.new
+      @stripe ||= Stripe::StripeClient.new
     end
 
     def create_payment_intent(amount, tax_id = nil, object_invoice = "")

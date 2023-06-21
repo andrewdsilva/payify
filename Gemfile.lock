@@ -1,11 +1,8 @@
 PATH
   remote: .
   specs:
-    payify (0.1.4)
-      dotenv-rails (~> 2.8.1)
-      money (~> 6.16)
+    payify (0.1.6)
       rails (~> 7.0)
-      stripe (~> 8.5.0)
 
 GEM
   remote: https://rubygems.org/
