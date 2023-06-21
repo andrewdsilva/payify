@@ -1,4 +1,4 @@
-module Stripe
+module StripeApi
   class Client
     def initialize
       stripe
