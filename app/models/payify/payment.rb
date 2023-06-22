@@ -1,5 +1,7 @@
 module Payify
   class Payment < ApplicationRecord
+    self.table_name = "payify_payments"
+
     include ::Payify::StripePaymentConcern
 
     enum status: { pending: 0, paid: 1, failed: 2 }
