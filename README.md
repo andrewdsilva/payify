@@ -16,34 +16,44 @@ And then execute:
 
 ```
 bundle install
+
+rails payify_engine:install:migrations
 ```
 
 ## Features ✅
 
-- Includes a Payment model
-- Provides concerns to easily add a payment system to your model
-- Enables payment with Stripe
-- Offers a payment form to integrate into your application
-- Allows payment status to be checked via an api route
-- Allows configuration of payment (currency, VAT)
-- Provides a user interface for payment processing
-- Enables management of payment status (pending, paid)
+- Easily create a payment using your models (e.g., from a reservation)
+- Set up payment with Stripe in just 2 minutes
+- Add a payment form to an existing page in your application
+- You can configure the currency and tax rates (VAT)
+- You can track the status of your payments (pending, paid)
+- You can check the payment status through the API
 
 ## Configuration
 
-For now, Payify uses Stripe as the payment gateway. You can configure the currency using an initializer.
+You can configure the currency using an initializer.
 
 ```ruby
 # initializers/payify.rb
 Payify.setup do |config|
   config.currency = "usd"
-  config.default_tax_rates_id = "eur"
+  config.default_tax_rates_id = "txr_1234567890"
 end
 ```
 
+### Tax rates
+
 To handle VAT or different tax rates on your payments, you need to create tax rates on Stripe and define the default_tax_rates_id or, alternatively, define the tax_rates_id method on your payment-related models. Leave it empty if you don't manage any taxes.
 
-You can set your Stripe API credentials using environment variables. (Secret key, Publishable key)
+To create a tax rate on Stripe, follow these steps:
+
+1. Go to the "Products" menu in your Stripe account.
+2. Navigate to the "Tax Rates" tab.
+3. Click on the "New" button located at the top right corner.
+
+### API key
+
+You need to set your Stripe API credentials using environment variables. (Secret key, Publishable key)
 
 ```ruby
 # .env
@@ -53,11 +63,13 @@ STRIPE_PUBLISHABLE_KEY="..."
 
 ## Usage
 
+### Add the functionality to your model
+
 To enable payment functionality for a model, simply include the HasPayment concern:
 
 ```ruby
 class Reservation < ApplicationRecord
-  include Payify::HasPaymentConcern
+  include ::Payify::HasPaymentConcern
 
   def amount_to_pay
     self.price
@@ -70,23 +82,50 @@ class Reservation < ApplicationRecord
 end
 ```
 
-When you want to request a payment for a model on which you added the concern, you just need to call the create_payment method.
+### Create a payment
 
-```ruby
-reservation_1.create_payment
-```
+When you want to request a payment for a model on which you added the concern, you just need to call the create_payment method.
 
 Then you can find the id of the new pending payment with payment.id.
 
 ```ruby
-reservation_1.payment.id
+reservation_1.create_payment
+reservation_1.payment.id # new payment id
 ```
 
-Now you just have to redirect the user to `/payments/:id/new` or include the payment form in your page.
+You can use the `after_save` event on your model to automatically create the payment. Here's an example of how you can implement it:
+
+```ruby
+class Booking < ApplicationRecord
+  include ::Payify::HasPaymentConcern
+
+  after_save :create_payment
+
+  def amount_to_pay
+    total_ttc
+  end
+end
+```
+
+### Include the routes
+
+To be able to use the routes of Payify, you need to add the following line to your `config/routes.rb` file:
+
+```ruby
+mount Payify::Engine => '/payify', as: 'payify'
+```
+
+### Request a payment
+
+To allow the user to make a payment, you have two options:
+
+1. Redirect the user to the payment form: You can redirect the user to the payment form using the URL `/payify/payments/:id/new`, where `:id` represents the payment id.
+
+2. Include the payment form on your page:
 
 ```ruby
 # reservation/show.html.erb
-<%= render "payify/payments/form", payment: @payment %>
+<%= render "payify/payments/form", payment: @object.payment %>
 ```
 
 After completing the payment process, the user will be redirected to:
@@ -94,6 +133,8 @@ After completing the payment process, the user will be redirected to:
 ```
 /payments/:id/complete
 ```
+
+### Verify the payment
 
 The application will then verify the payment status with Stripe. You can do it manually calling the following method:
 
@@ -119,7 +160,22 @@ To customize the page that displays the payment status, you can create the follo
 <% end %>
 ```
 
-## API
+### Override the controller
+
+If you want to override the `PaymentsController`, create the following file:
+
+```ruby
+# app/controllers/payify/payments_controller.rb
+module Payify
+  class PaymentsController < ApplicationController
+    include ::Payify::PaymentsControllerConcern
+
+    ...
+  end
+end
+```
+
+### Using the API
 
 If you prefer using the Payify API, after creating the payment object, you can initialize a new Stripe payment by making a request to: `/payments/:id/new.json`
 
@@ -131,7 +187,7 @@ After making the payment, you can make a request to the following endpoint to up
 /payments/:id/complete.json
 ```
 
-## Status
+### Status
 
 You can access the payment status using `@payment.status`. The possible statuses are:
 
