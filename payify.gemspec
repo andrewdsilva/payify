@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "active_model_serializers", "~> 0.10.13"
   spec.add_dependency "dotenv-rails", "~> 2.8.1"
   spec.add_dependency "money", "~> 6.16"
   spec.add_dependency "rails", "~> 7.0"
